@@ -8,7 +8,7 @@ import 'routes_name.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final argument = settings.arguments;
+    final args = settings.arguments;
     switch (settings.name) {
       case RoutesName.splash:
         return MaterialPageRoute(
@@ -23,9 +23,11 @@ class Routes {
           builder: (BuildContext context) => const LoginView(),
         );
       case RoutesName.subcategory:
-        return MaterialPageRoute(
-          builder: (BuildContext context) => const SubcategoryView(),
-        );
+        if (args is String) {
+          return MaterialPageRoute(
+              builder: (BuildContext context) => SubcategoryView(data: args));
+        }
+        return _errorRoute();
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(
@@ -35,5 +37,18 @@ class Routes {
           );
         });
     }
+  }
+
+  static Route<dynamic> _errorRoute() {
+    return MaterialPageRoute(builder: (_) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Error'),
+        ),
+        body: Center(
+          child: Text('ERROR'),
+        ),
+      );
+    });
   }
 }

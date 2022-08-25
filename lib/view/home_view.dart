@@ -198,7 +198,7 @@ class myListView extends StatelessWidget {
             Navigator.pushNamed(
               context,
               RoutesName.subcategory,
-              arguments: {"data": allData, "cat_id": catId},
+              arguments: allData,
             );
             // print(All_data);
           },
