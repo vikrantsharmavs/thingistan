@@ -15,7 +15,7 @@ class BannerModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (result != null) {
-      data['result'] = this.result!.map((v) => v.toJson()).toList();
+      data['result'] = result!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -63,17 +63,17 @@ class Result {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = this.id;
-    data['cat_id'] = this.catId;
-    data['subcat_id'] = this.subcatId;
-    data['banner_name'] = this.bannerName;
-    data['banner_image'] = this.bannerImage;
-    data['hexa_color_code'] = this.hexaColorCode;
-    data['banner_url'] = this.bannerUrl;
-    data['banner_desc'] = this.bannerDesc;
-    data['creation_date'] = this.creationDate;
-    data['updated_date'] = this.updatedDate;
-    data['status'] = this.status;
+    data['id'] = id;
+    data['cat_id'] = catId;
+    data['subcat_id'] = subcatId;
+    data['banner_name'] = bannerName;
+    data['banner_image'] = bannerImage;
+    data['hexa_color_code'] = hexaColorCode;
+    data['banner_url'] = bannerUrl;
+    data['banner_desc'] = bannerDesc;
+    data['creation_date'] = creationDate;
+    data['updated_date'] = updatedDate;
+    data['status'] = status;
     return data;
   }
 }

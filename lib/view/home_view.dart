@@ -1,10 +1,12 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 
 import '../data/response/status.dart';
 import '../resources/app_url.dart';
 import '../utilities/routes/routes_name.dart';
-import '../view_model/category_view_viewmodel.dart';
+import '../view_model/category_view_viewModel.dart';
 import '../view_model/home_view_model.dart';
 import '../view_model/user_view_model.dart';
 
@@ -167,12 +169,10 @@ class _HomeViewState extends State<HomeView> {
 class myListView extends StatelessWidget {
   final imgLocation;
 
-  // ignore: non_constant_identifier_names
   final imgCaption;
   final allData;
   final catId;
 
-  // ignore: non_constant_identifier_names
   myListView({this.imgLocation, this.imgCaption, this.allData, this.catId});
 
   @override
@@ -188,17 +188,11 @@ class myListView extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) =>
-            //         SubCategoryRoute(data: allData, cat_id: catId),
-            //   ),
-            // );
+            var objectData = {"data": allData, "catId": catId};
             Navigator.pushNamed(
               context,
               RoutesName.subcategory,
-              arguments: allData,
+              arguments: objectData,
             );
             // print(All_data);
           },

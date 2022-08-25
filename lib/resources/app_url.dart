@@ -4,8 +4,10 @@ class AppUrl {
   static String loginApiEndPoint = "${apiEndPoint}authlogin";
   static String registerApiEndPoint = "${apiEndPoint}auth";
   static String categoryApiEndPoint = "${apiEndPoint}category";
+  static String subcategoryApiEndPoint = "${apiEndPoint}subcategory/";
   static String public = "${baseUrl}assets/uploads/";
   static String categoryImage = "${public}category/";
   static String bannerApi = "${apiEndPoint}banner";
   static String bannerImage = "${baseUrl}assets/uploads/banner/";
+  static String subcategoryImage = "${baseUrl}assets/uploads/subcategory/";
 }

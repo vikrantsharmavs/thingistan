@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:thingistan/view/subcategory_view.dart';
 
@@ -23,19 +25,20 @@ class Routes {
           builder: (BuildContext context) => const LoginView(),
         );
       case RoutesName.subcategory:
-        if (args is String) {
+        dynamic jsonArgument = convertJson(args);
+        dynamic data = jsonArgument['data'];
+        dynamic catId = jsonArgument['catId'];
+        if (catId != "" && catId is String) {
           return MaterialPageRoute(
-              builder: (BuildContext context) => SubcategoryView(data: args));
+            builder: (_) => SubcategoryView(
+              data: data,
+              catId: catId,
+            ),
+          );
         }
         return _errorRoute();
       default:
-        return MaterialPageRoute(builder: (_) {
-          return const Scaffold(
-            body: Center(
-              child: Text("No route Defined"),
-            ),
-          );
-        });
+        return _errorRoute();
     }
   }
 
@@ -43,12 +46,18 @@ class Routes {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Error'),
+          title: const Text('Error'),
         ),
-        body: Center(
-          child: Text('ERROR'),
+        body: const Center(
+          child: Text('Some Error Found'),
         ),
       );
     });
   }
+}
+
+convertJson(object) {
+  var jsonEncodeValue = jsonEncode(object);
+  Map<String, dynamic> jsonDecodeValue = jsonDecode(jsonEncodeValue);
+  return jsonDecodeValue;
 }

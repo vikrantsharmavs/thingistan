@@ -11,7 +11,7 @@ class HomeRepository {
       var result = BannerModel.fromJson(response);
       return result;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

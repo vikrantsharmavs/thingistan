@@ -10,18 +10,17 @@ class UserModel {
     status = json['status'];
     error = json['error'];
     token = json['token'];
-    messages = json['messages'] != null
-        ? new Messages.fromJson(json['messages'])
-        : null;
+    messages =
+        json['messages'] != null ? Messages.fromJson(json['messages']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['error'] = this.error;
-    data['token'] = this.token;
-    if (this.messages != null) {
-      data['messages'] = this.messages!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['error'] = error;
+    data['token'] = token;
+    if (messages != null) {
+      data['messages'] = messages!.toJson();
     }
     return data;
   }
@@ -37,8 +36,8 @@ class Messages {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['success'] = success;
     return data;
   }
 }

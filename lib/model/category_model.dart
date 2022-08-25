@@ -7,15 +7,15 @@ class CategoryModel {
     if (json['results'] != null) {
       results = <Results>[];
       json['results'].forEach((v) {
-        results!.add(new Results.fromJson(v));
+        results!.add(Results.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.results != null) {
-      data['results'] = this.results!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (results != null) {
+      data['results'] = results!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -53,15 +53,15 @@ class Results {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cat_id'] = this.catId;
-    data['cat_name'] = this.catName;
-    data['cat_image'] = this.catImage;
-    data['cat_desc'] = this.catDesc;
-    data['cat_info'] = this.catInfo;
-    data['creation_date'] = this.creationDate;
-    data['updated_date'] = this.updatedDate;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['cat_id'] = catId;
+    data['cat_name'] = catName;
+    data['cat_image'] = catImage;
+    data['cat_desc'] = catDesc;
+    data['cat_info'] = catInfo;
+    data['creation_date'] = creationDate;
+    data['updated_date'] = updatedDate;
+    data['status'] = status;
     return data;
   }
 }

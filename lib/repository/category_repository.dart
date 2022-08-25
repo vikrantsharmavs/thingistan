@@ -13,7 +13,7 @@ class CategoryRepository {
       var result = CategoryModel.fromJson(response);
       return result;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }
