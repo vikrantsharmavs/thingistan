@@ -42,7 +42,7 @@ class _SubcategoryViewState extends State<SubcategoryView> {
         ],
         child: Container(
           width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child:
               Consumer<SubcategoryViewViewModel>(builder: (context, value, _) {
             switch (value.subcategoryList.status) {

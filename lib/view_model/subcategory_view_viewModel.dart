@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:thingistan/model/subcategory_model.dart';
 import 'package:thingistan/repository/subcategory_repository.dart';
@@ -18,7 +20,6 @@ class SubcategoryViewViewModel with ChangeNotifier {
     setSubcategory(ApiResponse.loading());
 
     _myRepo.fetchSubcategory(id).then((value) {
-      print(id);
       setSubcategory(
         ApiResponse.completed(value),
       );

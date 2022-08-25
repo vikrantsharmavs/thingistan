@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, prefer_const_constructors_in_immutables, camel_case_types
 
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
@@ -173,7 +173,9 @@ class myListView extends StatelessWidget {
   final allData;
   final catId;
 
-  myListView({this.imgLocation, this.imgCaption, this.allData, this.catId});
+  myListView(
+      {Key? key, this.imgLocation, this.imgCaption, this.allData, this.catId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
