@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../resources/constant.dart';
 import '../view_model/services/splash_services.dart';
 
 class SplashView extends StatefulWidget {
@@ -23,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: Center(
           child: Text(
-        "Thingistan",
+        AppConstant.APPLICATION_NAME,
         style: Theme.of(context).textTheme.headline4,
       )),
     );

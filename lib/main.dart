@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'resources/constant.dart';
 import 'utilities/routes/routes.dart';
 import 'utilities/routes/routes_name.dart';
 import 'view_model/auth_view_model.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'ThingStan',
+        title: AppConstant.APPLICATION_NAME,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
