@@ -31,7 +31,8 @@ class Routes {
         dynamic catId = jsonArgument['catId'];
         if (catId != "" && catId is String) {
           return MaterialPageRoute(
-              builder: (_) => SubcategoryView(data: data, catId: catId));
+            builder: (_) => SubcategoryView(data: data, catId: catId),
+          );
         }
         return _errorRoute();
       case RoutesName.product:
