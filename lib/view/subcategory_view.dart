@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:thingistan/resources/colors.dart';
 import 'package:thingistan/utilities/routes/routes_name.dart';
 import 'package:thingistan/view_model/subcategory_view_viewModel.dart';
 
@@ -53,29 +54,26 @@ class _SubcategoryViewState extends State<SubcategoryView> {
                 );
 
               case Status.COMPLETED:
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.20,
-                    child: GridView.builder(
-                      itemCount: value.subcategoryList.data!.result!.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 4.0,
-                        mainAxisSpacing: 4.0,
-                      ),
-                      itemBuilder: (context, index) {
-                        var row = value.subcategoryList.data!.result![index];
-                        return subCatView(
-                          catId: row.catId.toString(),
-                          imgLocation: row.subcatImage.toString(),
-                          subcategoryName: row.subcatName.toString(),
-                          subCatId: row.subcatId.toString(),
-                          subcategoryDesc: row.subcatDesc.toString(),
-                        );
-                      },
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: GridView.builder(
+                    itemCount: value.subcategoryList.data!.result!.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 0.0,
+                      mainAxisSpacing: 0.0,
                     ),
+                    itemBuilder: (context, index) {
+                      var row = value.subcategoryList.data!.result![index];
+                      return subCatView(
+                        catId: row.catId.toString(),
+                        imgLocation: row.subcatImage.toString(),
+                        subcategoryName: row.subcatName.toString(),
+                        subCatId: row.subcatId.toString(),
+                        subcategoryDesc: row.subcatDesc.toString(),
+                      );
+                    },
                   ),
                 );
               case Status.ERROR:
@@ -113,84 +111,61 @@ class subCatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration:
+          BoxDecoration(border: Border.all(color: AppColors.blackColor)),
       alignment: Alignment.topLeft,
-      child: Card(
-        // color: AppColor.Gray_light,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8.0),
-          ),
-        ),
-        elevation: 0.20,
-        child: Column(
-          children: [
-            InkWell(
-              onTap: () {
-                var obj = {
-                  "catId": catId,
-                  "subCatId": subCatId,
-                  "subcategoryName": subcategoryName
-                };
-
-                Navigator.pushNamed(context, RoutesName.product,
-                    arguments: obj);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => ProductRoute(
-                //       data: subcategoryName,
-                //       cat_id: row.catId.toString(),
-                //       subcat_id: row.subcatId.toString(),
-                //       subcat_info:
-                //           row.subcatInfo.toString(),
-                //     ),
-                //   ),
-                // );
-              },
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
-                ),
-                child: Image.network(
-                  AppUrl.subcategoryImage + imgLocation,
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.16,
-                  fit: BoxFit.fitWidth,
-                ),
+      child: Column(
+        children: [
+          InkWell(
+            onTap: () {
+              var obj = {
+                "catId": catId,
+                "subCatId": subCatId,
+                "subcategoryName": subcategoryName
+              };
+              Navigator.pushNamed(
+                context,
+                RoutesName.product,
+                arguments: obj,
+              );
+            },
+            child: ClipRRect(
+              // borderRadius: const BorderRadius.only(
+              //   topLeft: Radius.circular(8.0),
+              //   topRight: Radius.circular(8.0),
+              // ),
+              child: Image.network(
+                AppUrl.subcategoryImage + imgLocation,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.30,
+                fit: BoxFit.cover,
               ),
             ),
+          ),
+          Center(
+            child: Text(
+              subcategoryName.length > 20
+                  ? subcategoryName.substring(0, 20) + '...'
+                  : subcategoryName,
+              style: AppTheme.h1Style.copyWith(fontSize: 13),
+            ),
+          ),
+          if (subcategoryDesc != "")
             Padding(
               padding: const EdgeInsets.all(2.0),
               child: Container(
                 alignment: Alignment.topLeft,
-                child: Center(
-                  child: Text(
-                    subcategoryName.length > 20
-                        ? subcategoryName.substring(0, 20) + '...'
-                        : subcategoryName,
-                    style: AppTheme.h4Style.copyWith(fontSize: 13),
+                child: Text(
+                  subcategoryDesc != "" ? subcategoryDesc : '',
+                  style: AppTheme.h4Style.copyWith(
+                    fontSize: 14,
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-            if (subcategoryDesc != "")
-              Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Container(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    subcategoryDesc != "" ? subcategoryDesc : '',
-                    style: AppTheme.h4Style.copyWith(
-                      fontSize: 14,
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-          ],
-        ),
+        ],
       ),
     );
   }
