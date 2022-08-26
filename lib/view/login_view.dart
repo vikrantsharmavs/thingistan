@@ -48,7 +48,7 @@ class _LoginViewState extends State<LoginView> {
             children: [
               TextFormField(
                 controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.phone,
                 focusNode: emailFocusNode,
                 decoration: const InputDecoration(
                   hintText: "Email",

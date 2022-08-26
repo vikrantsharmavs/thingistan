@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:thingistan/utilities/routes/routes_name.dart';
 import 'package:thingistan/view_model/subcategory_view_viewModel.dart';
 
 import '../data/response/status.dart';
@@ -125,6 +126,14 @@ class subCatView extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
+                var obj = {
+                  "catId": catId,
+                  "subCatId": subCatId,
+                  "subcategoryName": subcategoryName
+                };
+
+                Navigator.pushNamed(context, RoutesName.product,
+                    arguments: obj);
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(

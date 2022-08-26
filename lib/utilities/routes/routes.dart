@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:thingistan/view/product_view.dart';
 import 'package:thingistan/view/subcategory_view.dart';
 
 import '../../view/home_view.dart';
@@ -30,9 +31,20 @@ class Routes {
         dynamic catId = jsonArgument['catId'];
         if (catId != "" && catId is String) {
           return MaterialPageRoute(
-            builder: (_) => SubcategoryView(
-              data: data,
+              builder: (_) => SubcategoryView(data: data, catId: catId));
+        }
+        return _errorRoute();
+      case RoutesName.product:
+        dynamic jsonArgument = convertJson(args);
+        var catId = jsonArgument['catId'];
+        var subCatId = jsonArgument['subCatId'];
+        var subcategoryName = jsonArgument['subcategoryName'];
+        if (catId != "" && subCatId != "" && catId is String) {
+          return MaterialPageRoute(
+            builder: (_) => ProductView(
               catId: catId,
+              subCatId: subCatId,
+              appBarName: subcategoryName,
             ),
           );
         }
