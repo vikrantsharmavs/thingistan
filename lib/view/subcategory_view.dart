@@ -137,7 +137,7 @@ class subCatView extends StatelessWidget {
               child: Image.network(
                 AppUrl.subcategoryImage + imgLocation,
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.30,
+                height: MediaQuery.of(context).size.height * 0.20,
                 fit: BoxFit.cover,
               ),
             ),

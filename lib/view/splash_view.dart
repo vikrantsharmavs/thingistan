@@ -23,7 +23,7 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: Center(
           child: Text(
-        "Splash Screen",
+        "Thingistan",
         style: Theme.of(context).textTheme.headline4,
       )),
     );
