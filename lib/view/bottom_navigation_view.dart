@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:thingistan/view/login_view.dart';
-
 import 'home_view.dart';
 
 class BottomNavigation extends StatefulWidget {
