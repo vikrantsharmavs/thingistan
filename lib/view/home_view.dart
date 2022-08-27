@@ -73,7 +73,6 @@ class _HomeViewState extends State<HomeView> {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
-
                   case Status.COMPLETED:
                     return Padding(
                       padding: const EdgeInsets.all(8.0),

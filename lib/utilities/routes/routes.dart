@@ -16,7 +16,7 @@ class Routes {
     switch (settings.name) {
       case RoutesName.navigation:
         return MaterialPageRoute(
-          builder: (BuildContext context) => BottomNavigation(),
+          builder: (BuildContext context) => const BottomNavigation(),
         );
       case RoutesName.splash:
         return MaterialPageRoute(
