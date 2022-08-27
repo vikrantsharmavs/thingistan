@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:thingistan/view/login_view.dart';
 
 import 'home_view.dart';
 
@@ -13,54 +14,117 @@ class BottomNavigation extends StatefulWidget {
 
 // ignore: camel_case_types
 class _BottomNavigationState extends State<BottomNavigation> {
-  int _selectedIndex = 0;
+  int pageIndex = 0;
   // ignore: prefer_final_fields
-  List<Widget> _widgetOptions = <Widget>[
+
+  final pages = [
     const HomeView(),
-    const HomeView(),
+    const LoginView(),
     const HomeView(),
     const HomeView(),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      pageIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home, size: 18.0),
-            label: 'Home',
+      backgroundColor: const Color(0xffC4DFCB),
+      body: pages[pageIndex],
+      bottomNavigationBar: Container(
+        height: 60,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.search, size: 18.0),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.shopping_cart, size: 18.0),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person, size: 18.0),
-            label: 'Profile',
-          ),
-        ],
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        backgroundColor: colorScheme.surface,
-        selectedItemColor: colorScheme.onSurface,
-        unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
-        selectedLabelStyle: textTheme.caption,
-        unselectedLabelStyle: textTheme.caption,
-        onTap: _onItemTapped,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  pageIndex = 0;
+                });
+              },
+              icon: pageIndex == 0
+                  ? const Icon(
+                      Icons.home_filled,
+                      color: Colors.white,
+                      size: 35,
+                    )
+                  : const Icon(
+                      Icons.home_outlined,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+            ),
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  pageIndex = 1;
+                });
+              },
+              icon: pageIndex == 1
+                  ? const Icon(
+                      Icons.work_rounded,
+                      color: Colors.white,
+                      size: 35,
+                    )
+                  : const Icon(
+                      Icons.work_outline_outlined,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+            ),
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  pageIndex = 2;
+                });
+              },
+              icon: pageIndex == 2
+                  ? const Icon(
+                      Icons.widgets_rounded,
+                      color: Colors.white,
+                      size: 35,
+                    )
+                  : const Icon(
+                      Icons.widgets_outlined,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+            ),
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  pageIndex = 3;
+                });
+              },
+              icon: pageIndex == 3
+                  ? const Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 35,
+                    )
+                  : const Icon(
+                      Icons.person_outline,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+            ),
+          ],
+        ),
       ),
     );
   }

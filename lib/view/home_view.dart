@@ -118,11 +118,8 @@ class _HomeViewState extends State<HomeView> {
               Consumer<CategoryViewViewModel>(builder: (context, category, _) {
                 switch (category.categoryList.status) {
                   case Status.LOADING:
-                    return SizedBox(
-                      height: MediaQuery.of(context).size.shortestSide,
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
 
                   case Status.COMPLETED:
