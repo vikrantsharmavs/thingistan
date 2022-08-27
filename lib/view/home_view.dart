@@ -30,8 +30,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void dispose() {
-    homeViewViewModel.fetchBannerApi(context);
-    categoryViewViewModel.categoryData(context);
     super.dispose();
   }
 
