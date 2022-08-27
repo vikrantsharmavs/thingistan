@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:thingistan/view/bottom_navigation_view.dart';
 import 'package:thingistan/view/product_view.dart';
 import 'package:thingistan/view/subcategory_view.dart';
 
@@ -13,6 +14,10 @@ class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
+      case RoutesName.navigation:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => BottomNavigation(),
+        );
       case RoutesName.splash:
         return MaterialPageRoute(
           builder: (BuildContext context) => const SplashView(),

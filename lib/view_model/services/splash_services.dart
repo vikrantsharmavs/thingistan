@@ -16,7 +16,7 @@ class SplashServices {
         Navigator.pushNamed(context, RoutesName.login);
       } else {
         Future.delayed(const Duration(seconds: 3));
-        Navigator.pushNamed(context, RoutesName.home);
+        Navigator.pushNamed(context, RoutesName.navigation);
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {
