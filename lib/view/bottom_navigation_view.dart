@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'home_view.dart';
 
-// ignore: camel_case_types
 class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _BottomNavigationState createState() => _BottomNavigationState();
 }
 
@@ -28,10 +30,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.amberAccent,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home, size: 18.0),
@@ -52,13 +55,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
         ],
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Colors.black,
-        iconSize: 23,
+        backgroundColor: colorScheme.surface,
+        selectedItemColor: colorScheme.onSurface,
+        unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
+        selectedLabelStyle: textTheme.caption,
+        unselectedLabelStyle: textTheme.caption,
         onTap: _onItemTapped,
-        elevation: 3,
       ),
     );
   }
