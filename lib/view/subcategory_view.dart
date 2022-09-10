@@ -54,27 +54,23 @@ class _SubcategoryViewState extends State<SubcategoryView> {
                 );
 
               case Status.COMPLETED:
-                return SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: GridView.builder(
-                    itemCount: value.subcategoryList.data!.result!.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 0.0,
-                      mainAxisSpacing: 0.0,
-                    ),
-                    itemBuilder: (context, index) {
-                      var row = value.subcategoryList.data!.result![index];
-                      return subCatView(
-                        catId: row.catId.toString(),
-                        imgLocation: row.subcatImage.toString(),
-                        subcategoryName: row.subcatName.toString(),
-                        subCatId: row.subcatId.toString(),
-                        subcategoryDesc: row.subcatDesc.toString(),
-                      );
-                    },
+                return GridView.builder(
+                  itemCount: value.subcategoryList.data!.result!.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 0.0,
+                    mainAxisSpacing: 0.0,
                   ),
+                  itemBuilder: (context, index) {
+                    var row = value.subcategoryList.data!.result![index];
+                    return subCatView(
+                      catId: row.catId.toString(),
+                      imgLocation: row.subcatImage.toString(),
+                      subcategoryName: row.subcatName.toString(),
+                      subCatId: row.subcatId.toString(),
+                      subcategoryDesc: row.subcatDesc.toString(),
+                    );
+                  },
                 );
               case Status.ERROR:
                 return Center(
